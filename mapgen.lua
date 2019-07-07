@@ -1,19 +1,18 @@
-local add_schem = function(a, b, c, d, e, f, g)
 
-	if g ~= 1 then return end
 
-	minetest.register_decoration({
-		deco_type = "schematic",
-		place_on = a,
-		sidelen = 80,
-		fill_ratio = b,
-		biomes = c,
-		y_min = d,
-		y_max = e,
-		schematic = f,
-		flags = "place_center_x, place_center_z"
-	})
-end
-
--- redwood tree
-add_schem({"default:dirt_with_dry_grass"}, 0.0025, {"biome-TODO"}, 1, 100, redwood.redwood_tree)
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {"default:dirt_with_dry_grass"},
+	sidelen = 32,
+	noise_params = {
+		offset = 0,
+		scale = 0.004,
+		spread = {x = 100, y = 100, z = 100},
+		seed = 1234,
+		octaves = 3,
+		persist = 0.6
+	},
+	y_min = 10,
+	y_max = 90,
+	decoration = "redwood:redwood_sapling_ongen",
+})
