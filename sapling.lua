@@ -82,9 +82,11 @@ local enough_height = function(pos, height)
 	end
 end
 
-local grow_sapling = function(pos, node)
+redwood.grow_sapling = function(pos)
 
-	local under =  minetest.get_node({
+	local node = minetest.get_node(pos)
+
+	local under = minetest.get_node({
 		x = pos.x,
 		y = pos.y - 1,
 		z = pos.z
@@ -123,7 +125,7 @@ minetest.register_abm({
 			return
 		end
 
-		grow_sapling(pos, node)
+		redwood.grow_sapling(pos, node)
 	end,
 })
 
@@ -142,6 +144,6 @@ minetest.register_abm({
 			return
 		end
 
-		grow_sapling(pos, node)
+		redwood.grow_sapling(pos, node)
 	end,
 })
