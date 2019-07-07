@@ -2,7 +2,7 @@
 -- Register Saplings
 local register_sapling = function(name, desc, texture, height)
 
-	minetest.register_node(name .. "_sapling", {
+	minetest.register_node("redwood:redwood_sapling", {
 		description = desc .. " Tree Sapling",
 		drawtype = "plantlike",
 		tiles = {texture .. ".png"},
@@ -23,6 +23,29 @@ local register_sapling = function(name, desc, texture, height)
 		sounds = default.node_sound_leaves_defaults(),
 		grown_height = height,
 	})
+
+	minetest.register_node("redwood:redwood_sapling_ongen", {
+		description = desc .. " Tree Sapling (ongen)",
+		drawtype = "plantlike",
+		tiles = {texture .. ".png"},
+		inventory_image = texture .. ".png",
+		wield_image = texture .. ".png",
+		paramtype = "light",
+		sunlight_propagates = true,
+		is_ground_content = false,
+		walkable = false,
+		selection_box = {
+			type = "fixed",
+			fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 7 / 16, 4 / 16}
+		},
+		groups = {
+			snappy = 2, dig_immediate = 3, flammable = 2,
+			attached_node = 1, sapling = 1
+		},
+		sounds = default.node_sound_leaves_defaults(),
+		grown_height = height,
+	})
+
 end
 
 register_sapling("redwood:redwood", "Redwood", "redwood_sapling", 31)
@@ -78,7 +101,7 @@ local grow_sapling = function(pos, node)
 		return
 	end
 
-	if node.name == "redwood:redwood_sapling" and under == "default:dirt_with_dry_grass" then
+	if under == "default:dirt_with_dry_grass" then
 		redwood.grow_redwood_tree(pos)
 	end
 
@@ -92,6 +115,25 @@ minetest.register_abm({
 	interval = 10,
 	chance = 50,
 	catch_up = false,
+	action = function(pos, node)
+
+		local light_level = minetest.get_node_light(pos) or 0
+
+		if light_level < 13 then
+			return
+		end
+
+		grow_sapling(pos, node)
+	end,
+})
+
+-- Grow saplings
+minetest.register_abm({
+	label = "redwood grow sapling",
+	nodenames = {"redwood:redwood_sapling_ongen"},
+	interval = 1,
+	chance = 1,
+	catch_up = true,
 	action = function(pos, node)
 
 		local light_level = minetest.get_node_light(pos) or 0
