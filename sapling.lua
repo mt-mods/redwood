@@ -103,7 +103,10 @@ redwood.grow_sapling = function(pos)
 		return
 	end
 
-	if under == "default:dirt_with_dry_grass" then
+	if under == "default:dirt_with_dry_grass"
+		or under == "default:dirt"
+		or under == "default:dry_dirt_with_dry_grass"
+		or under == "default:dry_dirt" then
 		redwood.grow_redwood_tree(pos)
 	end
 

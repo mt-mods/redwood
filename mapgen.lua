@@ -2,7 +2,7 @@
 
 minetest.register_decoration({
 	deco_type = "simple",
-	place_on = {"default:dirt_with_dry_grass"},
+	place_on = {"default:dirt_with_dry_grass", "default:dry_dirt_with_dry_grass"},
 	sidelen = 32,
 	noise_params = {
 		offset = 0,
