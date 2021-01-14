@@ -34,6 +34,7 @@ local register_sapling = function(name, desc, texture, height)
 		sunlight_propagates = true,
 		is_ground_content = false,
 		walkable = false,
+		drop = "redwood:redwood_sapling",
 		selection_box = {
 			type = "fixed",
 			fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 7 / 16, 4 / 16}
