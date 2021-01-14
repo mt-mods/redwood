@@ -1,5 +1,4 @@
 
-
 stairsplus:register_all("redwood", "redwood_wood", "redwood:redwood_wood", {
 	description = "Redwood",
 	tiles = {"redwood_wood.png"},

@@ -1,5 +1,4 @@
 
-
 -- redwood trunk
 minetest.register_node("redwood:redwood_trunk", {
 	description = "Redwood Trunk",
