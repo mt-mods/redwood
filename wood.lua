@@ -7,6 +7,7 @@ minetest.register_node("redwood:redwood_trunk", {
 		"redwood_trunk_top.png",
 		"redwood_trunk.png"
 	},
+	is_ground_content = false,
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
 	sounds = default.node_sound_wood_defaults(),
 	paramtype2 = "facedir",
