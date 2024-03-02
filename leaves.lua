@@ -12,6 +12,7 @@ minetest.register_node("redwood:redwood_leaves", {
 	paramtype = "light",
 	walkable = false,
 	waving = 1,
+	is_ground_content = false,
 	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
 	drop = {
 		max_items = 1,
